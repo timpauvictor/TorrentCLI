@@ -1,6 +1,7 @@
 import requests, sys
 from Torrent import Torrent
 
+
 rootURL = "https://kickass.to/json.php"
 strSearchString = ""
 
@@ -20,4 +21,8 @@ jsonReply = requests.get(url = rootURL, params=params).json()
 
 searchResults = []
 for searchResult in jsonReply["list"]:
-    searchResults.append(new Torrent(searchResult))
+    searchResults.append(Torrent(searchResult))
+
+for Torrent in searchResults:
+    print Torrent.getTitle()
+
