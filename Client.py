@@ -1,4 +1,5 @@
 import requests, sys
+from Torrent import Torrent
 
 rootURL = "https://kickass.to/json.php"
 strSearchString = ""
@@ -15,7 +16,8 @@ params = dict(
             page = "1"
         )
 
-jsonReply = requests.get(url = rootURL, params=params)
-jsonReply = jsonReply.json()
+jsonReply = requests.get(url = rootURL, params=params).json()
 
-print jsonReply
+searchResults = []
+for searchResult in jsonReply["list"]:
+    searchResults.append(new Torrent(searchResult))
