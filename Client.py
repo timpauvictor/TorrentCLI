@@ -8,7 +8,7 @@ strSearchString = ""
 for i in range(1, len(sys.argv)):
     strSearchString += sys.argv[i] + " "
 
-print "Search String: " + strSearchString
+print("Search String: " + strSearchString)
 
 params = dict(
             q = strSearchString,
@@ -24,5 +24,5 @@ for searchResult in jsonReply["list"]:
     searchResults.append(Torrent(searchResult))
 
 for Torrent in searchResults:
-    print Torrent.getTitle()
+    print(Torrent.getTitle())
 
