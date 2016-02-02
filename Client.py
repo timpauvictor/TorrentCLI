@@ -5,7 +5,7 @@ from Torrent import Torrent
 rootURL = "https://kickass.to/json.php"
 strSearchString = ""
 
-or i in range(1, len(sys.argv)):
+for i in range(1, len(sys.argv)):
     strSearchString += sys.argv[i] + " "
 
 print("Search String: " + strSearchString)
@@ -24,4 +24,4 @@ for searchResult in jsonReply["list"]:
     searchResults.append(Torrent(searchResult))
 
 for Torrent in searchResults:
-    print(Torrent.getTitle())
+    print(Torrent.getTitle() + " " + str(Torrent.getSizeInGB()))

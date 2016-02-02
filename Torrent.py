@@ -1,3 +1,4 @@
+import math
 class Torrent:
     def __init__(self, params):
         self.title = params["title"]
@@ -5,6 +6,7 @@ class Torrent:
         self.link = params["link"]
         self.pubDate = params["pubDate"]
         self.torrentLink = params["torrentLink"]
+        self.size = params["size"]
     def getTitle(self):
         return self.title
     def getCategory(self):
@@ -15,3 +17,7 @@ class Torrent:
         return self.pubDate
     def getTorrentLink(self):
         return self.torrentLink
+    def getSize(self):
+        return self.size
+    def getSizeInGB(self):
+        return str(self.size / math.pow(10,9)) + "GB"
