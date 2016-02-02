@@ -1,5 +1,6 @@
 import requests, sys
 from Torrent import Torrent
+from tabulate import tabulate
 
 
 rootURL = "https://kickass.to/json.php"
@@ -23,5 +24,11 @@ searchResults = []
 for searchResult in jsonReply["list"]:
     searchResults.append(Torrent(searchResult))
 
+table = []
+counter = 1
 for Torrent in searchResults:
-    print(Torrent.getTitle() + " " + str(Torrent.getSizeInGB()))
+    table.append([str(counter) + ". " + Torrent.getTitle(), Torrent.getSizeInGB()])
+    counter+= 1
+
+print(tabulate(table))
+
