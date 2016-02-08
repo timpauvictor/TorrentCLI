@@ -1,4 +1,4 @@
-import requests, os
+import requests, os, sys
 from Torrent import Torrent
 from tabulate import tabulate
 
@@ -28,8 +28,15 @@ table = []
 counter = 1
 for Torrent in searchResults:
     table.append([str(counter) + ". " + Torrent.getTitle(), Torrent.getSizeInGB()])
+    print (Torrent.getTorrentLink())
     counter+= 1
 
 print(tabulate(table))
 
-os.system()
+userInput = input(">> ")
+
+link = searchResults[int(userInput) + 1].getTorrentLink()
+
+os.system("wget -O /tmp/tcli.torrent \"" + link + "\"")
+
+os.system("delugec add /tmp/tcli.torrent")
