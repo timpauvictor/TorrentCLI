@@ -1,4 +1,4 @@
-import requests, sys
+import requests, os
 from Torrent import Torrent
 from tabulate import tabulate
 
@@ -32,3 +32,4 @@ for Torrent in searchResults:
 
 print(tabulate(table))
 
+os.system()
