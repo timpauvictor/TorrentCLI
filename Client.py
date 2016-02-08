@@ -28,7 +28,6 @@ table = []
 counter = 1
 for Torrent in searchResults:
     table.append([str(counter) + ". " + Torrent.getTitle(), Torrent.getSizeInGB()])
-    print (Torrent.getTorrentLink())
     counter+= 1
 
 print(tabulate(table))
@@ -39,4 +38,4 @@ link = searchResults[int(userInput) + 1].getTorrentLink()
 
 os.system("wget -O /tmp/tcli.torrent \"" + link + "\"")
 
-os.system("delugec add /tmp/tcli.torrent")
+os.system("delugeconsole add /tmp/tcli.torrent")
