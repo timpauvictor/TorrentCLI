@@ -1,2 +1,2 @@
 make:
-	python Client.py boardwalk empire
+	python cursesClient.py Skyrim

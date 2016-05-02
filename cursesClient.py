@@ -1,19 +1,15 @@
-import requests, os, sys
+import requests, os, sys, curses
 from Torrent import Torrent
 from tabulate import tabulate
 
+
+stdscr = curses.initscr()
 
 rootURL = "https://kat.cr/json.php"
 strSearchString = ""
 
 for i in range(1, len(sys.argv)):
     strSearchString += sys.argv[i] + " "
-
-if (strSearchString == ""):
-	print("No search string given")
-	strSearchString = input()
-
-print("Search String: " + strSearchString)
 
 params = dict(
             q = strSearchString,
@@ -34,12 +30,17 @@ for Torrent in searchResults:
     table.append([str(counter) + ". " + Torrent.getTitle(), Torrent.getSeeders(), Torrent.getSizeInGB()])
     counter+= 1
 
-print(tabulate(table))
+table = tabulate(table)
 
-userInput = input(">> ")
 
-myHash = searchResults[int(userInput) + 1].getHash()
+def main(stdscr):
+    stdscr.addstr(0, 0, "Search String: " + strSearchString)
+    stdscr.addstr(1, 0, table)
+    stdscr.refresh()
+    gotCh = stdscr.getch()
+    stdscr.addstr(28, 0, str(gotCh))
+    if (gotCh == ord('n')):
+    	stdscr.addstr(29, 0, "Next!")
+    stdscr.getch()
 
-# os.system("wget -O /tmp/tcli.torrent \"" + link + "\"")
-
-os.system("deluge-console add magnet:?xt=urn:btih:" + myHash)
+curses.wrapper(main)
