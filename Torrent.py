@@ -7,6 +7,7 @@ class Torrent:
         self.pubDate = params["pubDate"]
         self.torrentLink = params["torrentLink"]
         self.size = params["size"]
+        self.hash = params["hash"]
     def getTitle(self):
         return self.title
     def getCategory(self):
@@ -21,3 +22,5 @@ class Torrent:
         return self.size
     def getSizeInGB(self):
         return str(self.size / math.pow(10,9)) + "GB"
+    def getHash(self): 
+        return self.hash

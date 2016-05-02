@@ -3,7 +3,7 @@ from Torrent import Torrent
 from tabulate import tabulate
 
 
-rootURL = "https://kickass.to/json.php"
+rootURL = "https://kat.cr/json.php"
 strSearchString = ""
 
 for i in range(1, len(sys.argv)):
@@ -34,8 +34,8 @@ print(tabulate(table))
 
 userInput = input(">> ")
 
-link = searchResults[int(userInput) + 1].getTorrentLink()
+myHash = searchResults[int(userInput) + 1].getHash()
 
-os.system("wget -O /tmp/tcli.torrent \"" + link + "\"")
+# os.system("wget -O /tmp/tcli.torrent \"" + link + "\"")
 
-os.system("delugeconsole add /tmp/tcli.torrent")
+os.system("deluge-console add magnet:?xt=urn:btih:" + myHash)
