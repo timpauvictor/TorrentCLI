@@ -27,7 +27,7 @@ for searchResult in jsonReply["list"]:
 table = []
 counter = 1
 for Torrent in searchResults:
-    table.append([str(counter) + ". " + Torrent.getTitle(), Torrent.getSizeInGB()])
+    table.append([str(counter) + ". " + Torrent.getTitle(), Torrent.getSeeders(), Torrent.getSizeInGB()])
     counter+= 1
 
 print(tabulate(table))

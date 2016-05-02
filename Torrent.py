@@ -8,6 +8,8 @@ class Torrent:
         self.torrentLink = params["torrentLink"]
         self.size = params["size"]
         self.hash = params["hash"]
+        self.seeders = params["seeds"]
+        self.leechers = params["leechs"]
     def getTitle(self):
         return self.title
     def getCategory(self):
@@ -24,3 +26,7 @@ class Torrent:
         return str(self.size / math.pow(10,9)) + "GB"
     def getHash(self): 
         return self.hash
+    def getSeeders(self):
+        return self.seeders
+    def getLeechers(self):
+        return self.leechers
