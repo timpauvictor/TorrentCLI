@@ -38,9 +38,9 @@ def main(stdscr):
     stdscr.addstr(1, 0, table)
     stdscr.refresh()
     gotCh = stdscr.getch()
-    stdscr.addstr(28, 0, str(gotCh))
+    stdscr.addstr(28, 0, str(gotCh.encode('utf_8')))
     if (gotCh == ord('n')):
-    	stdscr.addstr(29, 0, "Next!")
+    	stdscr.addstr(29, 0, "Next!".encode('utf_8'))
     stdscr.getch()
 
 curses.wrapper(main)
